@@ -6,7 +6,7 @@ import staticdata.WebUrls;
 
 public class AccountPage extends BasePage{
 
-    private By NEW_BUTTON = By.xpath("/div[text()='New']");
+    private By NEW_BUTTON = By.xpath("//div[text()='New']");
 
     public AccountPage(WebDriver driver) {
         super(driver);

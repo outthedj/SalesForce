@@ -2,7 +2,9 @@ package tests;
 
 import org.testng.annotations.Test;
 import pages.AccountPage;
+import pages.CreateAccountPage;
 import pages.LoginPage;
+import testdata.GetNewAccountModel;
 
 public class SalesForceLoginPageTest extends BaseTest{
 
@@ -18,6 +20,8 @@ public class SalesForceLoginPageTest extends BaseTest{
         AccountPage accountPage = new AccountPage(driver);
         accountPage.openAccountsTab();
         accountPage.openCreateAccountPage();
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        createAccountPage.saveNewAccountForm(GetNewAccountModel.getAccountWithAllFields());
         System.out.println("");
     }
 }
