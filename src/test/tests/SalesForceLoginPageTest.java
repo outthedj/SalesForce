@@ -1,5 +1,6 @@
 package tests;
 
+import models.SalesForceAccountModel;
 import org.testng.annotations.Test;
 import pages.AccountPage;
 import pages.CreateAccountPage;
@@ -9,6 +10,8 @@ import testdata.GetNewAccountModel;
 public class SalesForceLoginPageTest extends BaseTest{
 
         LoginPage loginPage;
+        AccountPage accountPage;
+        CreateAccountPage createAccountPage;
 
     @Test
     public void firstCheckboxTest() {
@@ -21,7 +24,7 @@ public class SalesForceLoginPageTest extends BaseTest{
         accountPage.openAccountsTab();
         accountPage.openCreateAccountPage();
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
-        createAccountPage.saveNewAccountForm(GetNewAccountModel.getAccountWithAllFields());
-        System.out.println("");
+        SalesForceAccountModel salesForceAccountModel = GetNewAccountModel.getAccountWithAllFields();
+        createAccountPage.saveNewAccountForm(salesForceAccountModel);
     }
 }

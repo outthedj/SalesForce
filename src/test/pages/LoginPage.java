@@ -19,7 +19,7 @@ public class LoginPage extends BasePage{
     }
 
     public void inputUsername() {
-        driver.findElement(USERNAME_INPUT).sendKeys("igorvolynets-w2ny@force.com");
+        driver.findElement(USERNAME_INPUT).sendKeys("outthedj-d8sg@force.com");
     }
 
     public void inputPassword(){

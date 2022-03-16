@@ -8,7 +8,7 @@ public class DropDownList {
     WebDriver driver;
     String label;
     String dropDownListXpath = "//article[contains(., 'New Account')]//span[contains(., '%s')]/following-sibling::div";
-    String optionXpath = "//div[contains(@class, 'uiMenuList') and contains(@class, 'visible')]//li[contains(., 'Energy')]";
+    String optionXpath = "//div[contains(@class, 'uiMenuList') and contains(@class, 'visible')]//li[contains(., '%s')]";
 
     public DropDownList(WebDriver driver, String label) {
         this.driver = driver;
