@@ -1,32 +1,40 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import staticdata.WebTimeouts;
-import utilities.PropertiesManager;
 
-import java.util.concurrent.TimeUnit;
+import factorydriver.DriverFactory;
+import factorydriver.DriverManager;
+import factorydriver.DriverType;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.*;
+
+import java.net.MalformedURLException;
 
 public class BaseTest {
-
     WebDriver driver;
+    DriverManager driverManager;
 
-    @BeforeMethod
-    public void setUp(){
-        PropertiesManager propertiesManager = new PropertiesManager();
-        System.setProperty("webdriver.chrome.driver", propertiesManager.get("PATH_TO_CHROME_DRIVER"));
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().setScriptTimeout(WebTimeouts.SCRIPT_TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(WebTimeouts.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(WebTimeouts.IMPLICIT_TIMEOUT, TimeUnit.SECONDS);
+    @BeforeSuite
+    @Parameters({"browser"})
+    public void setUp(@Optional("chrome") String browser) throws MalformedURLException {
+        DriverFactory factory = new DriverFactory();
+        DriverType driverType = null;
+        if (browser.equals("chrome")) {
+            driverType = DriverType.CHROME;
+        }
+        driverManager = factory.getManager(driverType);
+        driverManager.createDriver();
+        driver = driverManager.getDriver();
+        driverManager.maximize();
+        driverManager.setTimeout();
+        System.getProperty("configuration");
     }
 
-    @AfterMethod
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    @AfterSuite(alwaysRun = true)
     public void tearDown() {
-        driver.quit();
+        driverManager.quitDriver();
     }
 }

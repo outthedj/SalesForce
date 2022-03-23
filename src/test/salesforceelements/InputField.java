@@ -3,13 +3,13 @@ package salesforceelements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class InputFields {
+public class InputField {
 
     WebDriver driver;
     String label;
     String inputXpath = "//article[contains(., 'New Account')]//label[contains(., '%s')]/following-sibling::input";
 
-    public InputFields(WebDriver driver, String label) {
+    public InputField(WebDriver driver, String label) {
         this.driver = driver;
         this.label = label;
     }
