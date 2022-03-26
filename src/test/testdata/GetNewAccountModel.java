@@ -4,11 +4,11 @@ import models.SalesForceAccountModel;
 import utilities.GenerateFakeMessage;
 
 public class GetNewAccountModel {
-    public static final String accountName = GenerateFakeMessage.getAccountName();
+    public static final String nameOfAccont = GenerateFakeMessage.getAccountName();
 
     public static SalesForceAccountModel getAccountWithAllFields() {
         return SalesForceAccountModel.builder()
-                .accountName(accountName)
+                .accountName(nameOfAccont)
                 .phone(GenerateFakeMessage.getPhone())
                 .fax(GenerateFakeMessage.getPhone())
                 .website(GenerateFakeMessage.getWebsite())
