@@ -4,29 +4,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import staticdata.WebUrls;
 
-public class LoginPage extends BasePage{
-
-    private By USERNAME_INPUT = By.id("username");
-    private By PASSWORD_INPUT = By.id("password");
-    private By LOGIN_BUTTON = By.id("Login");
+public class LoginPage extends BasePage {
+    private By EMAIL_INPUT = By.xpath("//input[@id='username']");
+    private By PWD_INPUT = By.xpath("//input[@id='password']");
+    private By LOG_BUTT = By.xpath("//input[@id='Login']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public void openSalesForcePage(){
-        driver.get(WebUrls.SALESFORCE_LOGIN_URL);
+    public void openLoginPage() {
+        driver.get(WebUrls.SALESFORCE);
     }
 
-    public void inputUsername() {
-        driver.findElement(USERNAME_INPUT).sendKeys("igorvolynets-w2ny@force.com");
-    }
-
-    public void inputPassword(){
-        driver.findElement(PASSWORD_INPUT).sendKeys("2807389out");
-    }
-
-    public void loginButton(){
-        driver.findElement(LOGIN_BUTTON).click();
+    public void makeLogin(String email, String pwd) {
+        driver.findElement(EMAIL_INPUT).sendKeys(email);
+        driver.findElement(PWD_INPUT).sendKeys(pwd);
+        driver.findElement(LOG_BUTT).click();
     }
 }
